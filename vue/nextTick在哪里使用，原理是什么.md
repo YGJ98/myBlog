@@ -1,0 +1,9 @@
+# nextTick在哪里使用，原理是什么
+
+nextTick的回调是在下次DOM更新循环结束之后执行的延迟回调。在修改数据之后立即使用这个方法，获取更新后的DOM。
+
+nextTick主要使用宏任务和微任务。原理就是异步方法（Promise,mutationObserver,setimmediate,setTimeout）经常与事件循环一起来问。
+
+补充：
+
+vue多次更新数据，最终会进行批处理更新。内部调用的就是nextTick实现了延迟更新，用户自定义的nextTick中回调会被延迟到更新完成后调用，从而可以获取更新后的DOM
